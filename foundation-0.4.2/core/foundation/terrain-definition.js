@@ -1,0 +1,17 @@
+import {terrainBoundaryIssues} from './terrain-boundary.js';
+const finite=n=>Number.isFinite(n)&&Math.abs(n)<=1e12,uuid=s=>typeof s==='string'&&/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/.test(s);
+export const newTerrainDefinition=()=>({version:1,cellSize:5,baseMode:'idw',baseHeight:0,controlPoints:[],contours:[],profiles:[],modifiers:[]});
+export function reprojectTerrainXY(parameters,point,factor){const next=structuredClone(parameters),t=next.terrain;if(!t)return next;for(const c of t.controlPoints){const xy=point(c.position);c.position=[...xy,c.position[2]];}for(const c of t.contours||[])c.points=c.points.map(point);for(const p of t.profiles){p.center=point(p.center);if(p.shape==='stroke')p.points=p.points.map(point);p.radius*=factor;}for(const m of t.modifiers)m.falloff*=factor;if(t.boundary)t.boundary.width*=factor;return next;}
+export function terrainDefinitionIssues(entity){
+ const t=entity.parameters?.terrain;if(t===undefined)return [];if(entity.type!=='Terrain'||!t||typeof t!=='object'||t.version!==1)return ['지형 계산 형식 오류'];
+ const issues=[...terrainBoundaryIssues(t.boundary)],ids=new Set(),take=value=>{if(!uuid(value)||ids.has(value))issues.push('지형 구성 ID 누락/중복');ids.add(value);};
+ if(!Number.isFinite(t.cellSize)||t.cellSize<.1||t.cellSize>1000)issues.push('지형 계산 간격은 0.1~1000m');
+ if(!['flat','idw'].includes(t.baseMode)||!finite(t.baseHeight))issues.push('기준 지형 높이/보간 방식 오류');
+ if(!Array.isArray(t.controlPoints)||t.controlPoints.length>256||!Array.isArray(t.profiles)||t.profiles.length>64||!Array.isArray(t.modifiers)||t.modifiers.length>128)return [...issues,'지형 제어점/프로파일/변형 수 한도 오류'];
+ for(const c of t.controlPoints){take(c?.id);if(!Array.isArray(c?.position)||c.position.length!==3||!c.position.every(finite))issues.push('높이 제어점 좌표 오류');}
+ const contours=t.contours??[];if(!Array.isArray(contours)||contours.length>32)return [...issues,'등고선은 최대 32개까지 지원합니다.'];for(const c of contours){take(c?.id);if(!Number.isFinite(c?.height)||!Array.isArray(c?.points)||c.points.length<(c.closed?3:2)||c.points.length>128||c.points.some(p=>!Array.isArray(p)||p.length!==2||!p.every(finite))||!Array.isArray(c.vertexIds)||c.vertexIds.length!==c.points.length){issues.push('등고선 좌표·높이·정점 형식 오류');continue;}c.vertexIds.forEach(take);for(let i=1;i<c.points.length;i++)if(Math.hypot(c.points[i][0]-c.points[i-1][0],c.points[i][1]-c.points[i-1][1])<1e-6)issues.push('등고선의 중복/너무 짧은 구간');if(c.closed&&Math.hypot(c.points[0][0]-c.points.at(-1)[0],c.points[0][1]-c.points.at(-1)[1])<1e-6)issues.push('닫힌 등고선은 마지막 점을 중복하지 않습니다.');}
+ for(const p of t.profiles){take(p?.id);if(!['level','offset'].includes(p?.kind)||!['base','absolute'].includes(p?.mode)||!Array.isArray(p?.center)||p.center.length!==2||!p.center.every(finite)||!finite(p.radius)||p.radius<=0||p.radius>1e7||!finite(p.height))issues.push('높이 프로파일 영역/높이 오류');if(p?.shape!==undefined&&!['circle','stroke'].includes(p.shape))issues.push('높이 영역 형식 오류');if(p?.shape==='stroke'&&(!Array.isArray(p.points)||p.points.length<1||p.points.length>256||p.points.some(pt=>!Array.isArray(pt)||pt.length!==2||!pt.every(finite))))issues.push('브러시 경로는 1~256개 점이 필요합니다.');}
+ const profiles=new Set(t.profiles.map(p=>p?.id));
+ for(const m of t.modifiers){take(m?.id);if(!profiles.has(m?.profileId)||!Number.isFinite(m.strength)||m.strength<0||m.strength>1||!finite(m.falloff)||m.falloff<0||m.falloff>1e7||m.enabled!==undefined&&typeof m.enabled!=='boolean')issues.push('지형 변형의 프로파일/강도/블렌드 오류');}
+ return [...new Set(issues)];
+}

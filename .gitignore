@@ -1,0 +1,33 @@
+node_modules/
+dist/
+studio-workspace/
+test-results/
+playwright-report/
+*.log
+.test-workspace/
+.test-temp-042/
+
+release/
+.desktop-test/
+
+release-0.3/
+
+# Generated release packages and validation scratch data
+release-*/
+.asset-validation/
+.compat-validation/
+.foundation-validation/
+.test-temp/
+.foundation-audit-temp/
+.ocr/
+.engine-validation/
+.tools/
+
+# Preserved work, audit, and recovery copies (canonical source is foundation-0.4.2/)
+foundation-audit-*/
+foundation-backups/
+foundation-stabilization/
+foundation-work/
+
+# Upstream PhotoCraft source copy (reference only; fetch from upstream commit in vendor/UPSTREAM-SOURCES.json)
+foundation-0.4.2/vendor/photocraft-*/

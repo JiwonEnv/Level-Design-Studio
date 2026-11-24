@@ -1,0 +1,42 @@
+/* Workspace layout: one object tree, explicit inspector sections, unobscured review. */
+:root{font-size:13px;--generation-panel:clamp(230px,35%,330px)}
+body{display:flex;flex-direction:column;height:100dvh;padding-bottom:0;min-width:760px}
+#app{display:flex;flex-direction:column;flex:1;min-height:0;height:100%;overflow:hidden}
+header{height:64px;min-height:64px;flex-shrink:0;padding:0 16px;gap:8px;flex-wrap:nowrap}
+header .brand{min-width:170px;margin-right:10px;font-size:16px}header .brand small{font-size:9px;letter-spacing:1px}
+header select{width:180px}header button{font-size:12px}header .header-right{gap:7px}
+button,input,select{font-size:13px}small,.hint{font-size:11px}h4{font-size:12px}
+.header-menu{position:relative;margin:0;font-size:12px;flex-shrink:0;color:#dce5e8}
+.header-menu>summary{list-style:none;border:1px solid #3b454d;border-radius:6px;background:#2a333b;padding:8px 11px;cursor:pointer}
+.header-menu>summary::after{content:' ▾';color:#a8bdb6}.header-menu>div{position:absolute;right:0;top:calc(100% + 6px);z-index:12;min-width:170px;padding:6px;display:grid;gap:4px;border:1px solid #52615e;border-radius:8px;background:#202b30;box-shadow:0 8px 20px #0005}.header-menu button{text-align:left}
+#steps{height:68px;min-height:68px;flex-shrink:0}#steps button{padding:8px 18px;max-width:none;width:25%}#steps button b{font-size:14px;margin:3px 0}#steps button small{font-size:9px}#steps button span{font-size:11px}
+main{height:auto;min-height:0;flex:1;margin-bottom:24px;overflow:hidden}.workspace,.library,.inspector{min-height:0}
+.workspace-toolbar{height:48px;padding:0 16px;flex-shrink:0}.workspace-toolbar h1{font-size:17px;margin:0}#eyebrow{display:none}
+.library{padding:12px;overflow:hidden}.library>.panel-heading{margin-bottom:10px}.panel-switch{margin-bottom:10px}.panel-switch button{font-size:12px;padding:7px 4px}
+#foundation-tree{padding:0;border:0;margin:0;max-height:none;min-height:0;overflow:auto;flex:1}#foundation-tree>summary{font-size:12px;padding:4px 0 10px}
+#common-tree:empty{display:none;min-height:0}#common-tree{margin-bottom:8px}.common-node{font-size:12px}
+#objects{display:block}.tree-group{margin:4px 0 16px}.tree-group>summary{font-size:12px;padding:4px 0;cursor:pointer}.entity-row,.tree-group .object-row{font-size:12px;padding:8px;gap:8px}.entity-row small,.tree-group .object-row small{font-size:10px;white-space:nowrap}.object-row{font-size:12px}
+#advanced-node-create{margin:8px 0 12px}#advanced-node-create>summary{font-size:11px;padding:6px 0;cursor:pointer}.node-create{margin-top:6px}
+#library-assets{overflow:hidden}#scene-layers{min-height:0}.layer-row{padding:10px 0}.layer-row label,.layer-row button{font-size:12px}
+.bottom-toolbar{height:30px;padding:0 12px;flex-shrink:0;font-size:11px}.bottom-toolbar button{font-size:11px}.bottom-toolbar>span:nth-child(2){display:none}
+.inspector{padding:12px}.inspector>.panel-heading{margin-bottom:10px}.inspector label{font-size:12px;line-height:1.8;margin-bottom:9px}.inspector input,.inspector select{font-size:13px;padding:7px}.inspector .hint{font-size:11px}.inspector h3{margin:12px 0}.inspector h4{margin-top:18px}
+.inspector-tabs{display:flex;gap:5px;margin-bottom:12px}.inspector-tabs button{flex:1;font-size:12px;padding:8px 4px}.inspector-tabs .active{background:#40584a;border-color:#b8d49e;color:#eff7e8}
+.inspector-flags{display:flex;gap:18px;margin-bottom:8px}.inspector-flags label{display:flex;align-items:center;gap:4px;margin:0}#common-properties{margin:16px 0;border-top:1px solid #45544e;padding-top:12px}#common-properties>summary{cursor:pointer;font-size:12px;margin-bottom:10px}
+.export-panel{margin-top:10px;padding:0;border:0;background:transparent}.export-panel h3,.export-panel p,.export-panel small{display:none}.export-panel button{font-size:11px}
+.planner-tools{padding:7px 9px;gap:5px}.planner-tools button{font-size:12px;padding:6px 8px}.planner-tools label{font-size:11px}.reference-tools{font-size:12px;padding:7px 10px}.reference-tools button,.reference-tools input{font-size:12px}.reference-tools input{width:80px}
+.trace-tools{position:relative;margin:0;align-self:center;font-size:12px}.trace-tools>summary{cursor:pointer;padding:6px;border:1px solid #53645b;border-radius:5px}.trace-tools>div{position:absolute;top:100%;left:0;z-index:5;min-width:280px;background:#26363c;border:1px solid #576a60;border-radius:6px;padding:8px;display:flex;flex-wrap:wrap;gap:5px}
+#design-inspection{padding:5px 10px;font-size:11px}#design-inspection>details{margin:6px 0 0}#design-metrics{line-height:1.5}.planner-status{height:27px;font-size:11px}.planner-help{font-size:10px;padding:5px 9px}.vertex-table input{font-size:12px}.pill{font-size:10px}
+.generation-active #viewport{right:var(--generation-panel)}
+#step-content.generation-overlay{inset:0 0 0 auto;width:var(--generation-panel);max-height:none;height:100%;overflow:auto;background:#202d33;border:0;border-left:1px solid #506158;border-radius:0;padding:14px}
+.generation-toolbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:sticky;top:-14px;background:#202d33;padding:10px 0;z-index:1}.generation-toolbar>div,.generation-toolbar>select,.generation-toolbar>#preview-generation{grid-column:1/-1}.generation-toolbar>div{margin:0}.generation-toolbar select{width:100%;font-size:12px}.generation-toolbar button{font-size:12px;padding:9px 5px}.generation-toolbar small{font-size:11px;line-height:1.6}
+.generation-toolbar #apply-generation:not(:disabled),#empty-next,#home-new{background:#bad6a3;color:#1d3025;border-color:#bad6a3;font-weight:600}
+.generator-kinds{gap:8px;font-size:11px;margin-top:6px}#generation-summary{font-size:12px;line-height:1.65;margin-top:12px}.generation-limits{font-size:11px;line-height:1.7;padding:10px;background:#19262b;border-radius:6px}.generation-overlay details{font-size:12px}
+#generation-review h4{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:13px}#generation-selected-count{font-size:11px;color:#c4d8b5;white-space:nowrap}.generation-selection-actions{display:flex;gap:6px;margin:10px 0}.generation-selection-actions button{font-size:11px;padding:5px 8px}
+#generation-review .generation-item{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:9px;align-items:center;padding:10px 8px;border:1px solid #4d6157;border-radius:6px;margin:7px 0;line-height:1.4;cursor:pointer}#generation-review input[type=checkbox]{width:18px;height:18px;margin:0;padding:0}#generation-review .generation-item>span{min-width:0;overflow-wrap:anywhere;font-size:12px}#generation-review .generation-item>small{font-size:11px;color:#c3daa9}.generation-kept{display:block;margin-top:4px;font-size:10px;color:#b7c5c9}
+#empty{z-index:2;pointer-events:none;background:#1d282ee8;border:1px solid #51675b;border-radius:12px;padding:28px;max-width:500px}#empty>span{font-size:36px}#empty h2{font-size:20px;margin-top:10px}#empty p{font-size:13px}#empty-next{font-size:13px}
+#preview-status{position:absolute;top:10px;left:12px;right:12px;z-index:3;display:flex;align-items:center;flex-wrap:wrap;gap:8px;background:#263c32ee;border:1px solid #a9c790;border-radius:7px;padding:9px 12px;font-size:12px}#preview-status span{margin-right:auto}#preview-status button{font-size:12px;padding:6px 9px}.reference-guide{padding-left:22px;line-height:2;color:#c0d2c8}#inspector-reference-import,#inspector-map-open{margin:5px 5px 5px 0}
+#foundation-bottom{bottom:28px}#foundation-bottom summary{font-size:11px}footer{position:static;height:28px;min-height:28px;flex-shrink:0;font-size:10px}#workspace-location{max-width:42%}.viewport-badge{font-size:10px}
+#foundation-bottom>details{margin:0}
+body.at-home #foundation-home{inset:64px 0 28px}.home-heading p{font-size:14px}.home-actions button{font-size:14px}.home-heading .section-tag{font-size:10px}#recent-projects small{font-size:11px}
+@media(max-width:1200px){header .brand{min-width:130px;font-size:14px;margin-right:0}header .brand small{display:none}header #projects{width:130px}header>button,header .header-right button,.header-menu>summary{font-size:11px;padding:7px}header{gap:5px;padding:0 10px}#save-state{font-size:10px;max-width:80px}#steps button{padding:8px 10px}#steps button span{font-size:10px}.workspace-toolbar{padding:0 10px}.planner-tools button{font-size:11px;padding:6px}.inspector{padding:10px}}
+@media(max-height:760px){#steps{height:50px;min-height:50px}#steps button span{display:none}.workspace-toolbar{height:40px}.planner-help{display:none}.home-heading h1{font-size:28px}}

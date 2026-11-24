@@ -1,0 +1,148 @@
+{
+  "name": "level-design-studio",
+  "version": "0.4.2",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "vite build",
+    "test": "node --test tests/store.test.js tests/desktop-service.test.js tests/scene.test.js tests/foundation/*.test.js",
+    "start": "electron .",
+    "test:ui": "playwright test",
+    "desktop": "npm run build && electron .",
+    "dev:web": "node server.js",
+    "start:web": "node server.js",
+    "package:dir": "npm run build && electron-builder --dir --win --x64",
+    "package:win": "npm run build && electron-builder --win nsis --x64",
+    "test:desktop": "node scripts/test-desktop.mjs",
+    "test:level:desktop": "node scripts/test-level-desktop.mjs",
+    "test:foundation": "node --test tests/foundation/*.test.js",
+    "test:foundation:desktop": "node scripts/test-foundation-desktop.mjs",
+    "test:generation:selection": "node scripts/test-generation-selection.mjs",
+    "test:reference:layers": "node scripts/test-reference-layers.mjs",
+    "prepare:engine:validation": "node scripts/prepare-engine-validation.mjs",
+    "test:reference:map": "node scripts/test-map-reference.mjs",
+    "test:reference:edit": "node scripts/test-image-workspace.mjs",
+    "test:reference:analysis": "node scripts/test-analysis-workspace.mjs",
+    "test:design:inspection": "node scripts/test-design-inspection.mjs",
+    "test:terrain:pipeline": "node scripts/test-terrain-pipeline.mjs",
+    "test:terrain:authoring": "node scripts/test-terrain-authoring.mjs",
+    "test:terrain:boundary": "node scripts/test-terrain-boundary.mjs",
+    "test:editor:ux": "node scripts/test-editor-ux.mjs",
+    "test:reference:workspace": "node scripts/test-reference-workspace.mjs",
+    "test:reference:raster": "node scripts/test-raster-workspace.mjs",
+    "test:reference:transforms": "node scripts/test-raster-transforms.mjs",
+    "test:reference:psd": "node scripts/test-psd-reference.mjs",
+    "test:reference:map-range": "node scripts/test-map-range.mjs",
+    "test:reference:photocraft": "node scripts/test-photocraft-workspace.mjs",
+    "test:reference:vectors": "node scripts/test-reference-vectors.mjs",
+    "test:drawing:completion": "node scripts/test-drawing-completion.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "electron": "45.3.1",
+    "electron-builder": "26.18.0",
+    "maplibre-gl": "6.18.0",
+    "three": "0.180.0",
+    "vite": "8.3.8"
+  },
+  "description": "Windows desktop level design and asset workspace",
+  "author": "Level Design Studio",
+  "main": "desktop/main.js",
+  "build": {
+    "appId": "com.leveldesignstudio.foundation.asset042",
+    "productName": "Level Design Studio Foundation 0.4.2",
+    "directories": {
+      "output": "release-0.4.2"
+    },
+    "files": [
+      "dist/**/*",
+      "desktop/**/*",
+      "store.js",
+      "package.json",
+      "core/**/*",
+      "infrastructure/**/*",
+      "application/**/*",
+      "adapters/**/*"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "runAfterFinish": false,
+      "deleteAppDataOnUninstall": false,
+      "artifactName": "Level-Design-Studio-Setup-${version}.${ext}"
+    },
+    "extraResources": [
+      {
+        "from": "../.tools/photocraft-0.23.1",
+        "to": "tools/photocraft",
+        "filter": [
+          "photocraft-cli.exe",
+          "LICENSE-*",
+          "NOTICE",
+          "ATTRIBUTION.md",
+          "OFL-*.txt"
+        ]
+      },
+      {
+        "from": "../.tools/opencv-4.13.0",
+        "to": "tools/opencv",
+        "filter": [
+          "opencv.cjs",
+          "LICENSE"
+        ]
+      },
+      {
+        "from": "node_modules/earcut/LICENSE",
+        "to": "licenses/earcut-ISC.txt"
+      },
+      {
+        "from": "node_modules/maplibre-gl/LICENSE.txt",
+        "to": "licenses/maplibre-BSD.txt"
+      },
+      {
+        "from": "node_modules/three/LICENSE",
+        "to": "licenses/three-MIT.txt"
+      },
+      {
+        "from": "vendor/licenses/terra-draw-MIT.txt",
+        "to": "licenses/terra-draw-MIT.txt"
+      },
+      {
+        "from": "vendor/licenses/terra-draw-maplibre-MIT.txt",
+        "to": "licenses/terra-draw-maplibre-MIT.txt"
+      },
+      {
+        "from": "node_modules/@turf/area/LICENSE",
+        "to": "licenses/turf-area-MIT.txt"
+      },
+      {
+        "from": "node_modules/@turf/length/LICENSE",
+        "to": "licenses/turf-length-MIT.txt"
+      }
+    ],
+    "npmRebuild": false
+  },
+  "dependencies": {
+    "@turf/area": "7.4.0",
+    "@turf/length": "7.4.0",
+    "earcut": "3.2.4",
+    "terra-draw": "1.40.0",
+    "terra-draw-maplibre-gl-adapter": "1.5.0"
+  }
+}

@@ -1,0 +1,60 @@
+/* Home is independent from the editor's compact tool panels. */
+body.at-home #foundation-home{inset:56px 0 0;padding:0;display:grid;grid-template-columns:232px minmax(0,1fr);overflow:hidden;background:#141820;color:#eef1f7}
+body.at-home header{height:56px;min-height:56px;background:#181e28;border-bottom:1px solid #313b4b}
+body.at-home header #asset-monitor-open,body.at-home footer{display:none!important}
+#foundation-home .home-sidebar{display:flex;flex-direction:column;min-height:0;padding:28px 16px 20px;background:#1a202b;border-right:1px solid #303a4b;overflow:auto}
+#foundation-home .home-sidebar-label{margin:0 12px 14px;color:#aab6ca;font-size:13px;font-weight:600}
+#foundation-home .home-actions{display:grid;gap:10px;margin:0 0 28px}
+#foundation-home .home-actions button{display:flex;gap:12px;align-items:center;min-height:70px;padding:13px;text-align:left;font-size:15px;border-radius:8px;background:#252e3d;border:1px solid #45536a;color:#eef1f7}
+#foundation-home .home-actions button:hover{background:#303d52;border-color:#8299bb}
+#foundation-home .home-actions button#home-new{background:#9cbcff;border-color:#9cbcff;color:#132440}
+#foundation-home .home-actions button#home-new:hover{background:#b8cfff}
+#foundation-home .home-actions b{display:block;font-weight:650;font-size:15px;line-height:1.5}
+#foundation-home .home-actions small{display:block;font-size:12px;color:inherit;opacity:.8;margin-top:3px;font-weight:400}
+#foundation-home svg{flex-shrink:0}
+#foundation-home .home-navigation{display:grid;gap:5px;border-top:1px solid #303a4b;padding-top:18px}
+#foundation-home .home-navigation button,#foundation-home .home-sidebar-bottom button{display:flex;align-items:center;gap:12px;text-align:left;min-height:44px;padding:10px 13px;background:transparent;border:1px solid transparent;color:#bdc9dc;font-size:15px}
+#foundation-home .home-navigation button[aria-pressed=true]{background:#293b57;border-color:#415b81;color:#e7efff}
+#foundation-home .home-navigation button:hover,#foundation-home .home-sidebar-bottom button:hover{background:#2a3445}
+#foundation-home .home-sidebar-bottom{margin-top:auto;padding-top:28px;display:grid;gap:12px}
+#foundation-home .home-version{font-size:12px;color:#9fadc3;padding-left:13px}
+#foundation-home .home-content{min-width:0;overflow:auto;padding:38px clamp(24px,4vw,64px) 28px}
+#foundation-home .home-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin:0 0 32px}
+#foundation-home .home-heading h1{margin:0 0 8px;font-size:28px;line-height:1.3;letter-spacing:-.5px;font-weight:650}
+#foundation-home .home-heading p{margin:0;color:#b3bfd1;font-size:15px;line-height:1.6}
+#foundation-home .home-search{display:grid;gap:7px;width:290px;flex-shrink:0;font-size:13px;color:#b3bfd1}
+#foundation-home .home-search input{width:100%;min-height:40px;border-color:#53627a;background:#1a2230;font-size:14px}
+#foundation-home .home-list-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+#foundation-home .home-list-heading h2{font-size:16px;margin:0;font-weight:600}
+#foundation-home #recent-count{margin-left:8px;font-size:13px;color:#aab8cf;font-weight:400}
+#foundation-home .home-list-heading>span{font-size:13px;color:#aab8cf}
+#foundation-home #recent-projects{display:grid;gap:10px}
+#foundation-home #recent-projects article{margin:0;overflow:visible;background:#1e2633;border:1px solid #354257;border-radius:9px}
+#foundation-home #recent-projects .home-project-open{width:100%;display:flex;align-items:center;gap:16px;padding:14px 20px 10px;text-align:left;background:transparent;border:0;border-radius:8px 8px 0 0;min-height:76px}
+#foundation-home #recent-projects .home-project-open:hover{background:#29364a}
+#foundation-home .home-project-icon{width:42px;height:42px;display:grid;place-items:center;background:#293a54;border:1px solid #3c5476;border-radius:9px;color:#abc9ff;flex-shrink:0}
+#foundation-home .home-project-info{display:grid;min-width:0;gap:6px;flex:1}
+#foundation-home .home-project-info strong{font-size:17px;font-weight:600;line-height:1.4;color:#f0f3fa;overflow-wrap:anywhere}
+#foundation-home #recent-projects .home-project-location{font-size:14px;color:#b4c2d7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#foundation-home .home-project-modified{display:grid;gap:5px;flex-shrink:0;text-align:right}
+#foundation-home .home-project-modified small{font-size:12px;color:#9daec7}
+#foundation-home .home-project-modified time{font-size:13px;color:#c2cee0;font-variant-numeric:tabular-nums}
+#foundation-home #recent-projects .home-project-arrow{font-size:20px;color:#a5bce0;margin-left:8px}
+#foundation-home .home-project-path{margin:0;padding:0 20px 8px 78px;font-size:12px;color:#aab9cf}
+#foundation-home .home-project-path summary{cursor:pointer;width:fit-content;min-height:24px;line-height:24px}
+#foundation-home .home-project-path p{margin:6px 0;padding:10px 12px;background:#151c27;border-radius:5px;font-size:13px;color:#c3d0e4;overflow-wrap:anywhere;user-select:text}
+#foundation-home #recent-projects .home-project-warning,#home-warning{color:#ffd48d;font-size:14px}
+#foundation-home .home-empty{padding:64px 20px;text-align:center;border:1px dashed #42516a;border-radius:9px;background:#1a212d}
+#foundation-home .home-empty>svg{width:36px;height:36px;color:#9cbcff}
+#foundation-home .home-empty h3{font-size:20px;margin:14px 0 8px}
+#foundation-home .home-empty p{font-size:15px;color:#b3bfd1;margin:0 0 20px}
+#foundation-home .home-storage{border-top:1px solid #303b4c;margin-top:28px;padding-top:16px;color:#aab8cf;font-size:13px}
+#foundation-home .home-storage summary{cursor:pointer;width:fit-content;padding:4px 0}
+#foundation-home #home-paths{font-size:13px;line-height:1.7;color:#b8c7dd;overflow-wrap:anywhere}
+#foundation-home #home-paths dt{margin:14px 0 4px;font-weight:600;color:#e1e8f4}
+#foundation-home #home-paths dd{margin:0;user-select:text}
+#foundation-home #home-library-panel{border:0;padding:0;margin:0}
+#foundation-home #home-library-panel>label{font-size:13px;color:#b3bfd1;max-width:400px}
+#foundation-home #home-assets article{background:#1e2633;border:1px solid #354257;border-radius:8px}
+@media(max-width:1150px){body.at-home #foundation-home{grid-template-columns:208px minmax(0,1fr)}#foundation-home .home-content{padding:28px}#foundation-home .home-heading{gap:18px;margin-bottom:26px}#foundation-home .home-search{width:250px}#foundation-home .home-heading p{font-size:14px}}
+@media(max-width:950px){#foundation-home .home-heading{align-items:flex-start;flex-direction:column}#foundation-home .home-search{width:100%;max-width:420px}}

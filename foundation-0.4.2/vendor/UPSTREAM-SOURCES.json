@@ -1,0 +1,16 @@
+{
+  "verifiedAt": "2026-11-17",
+  "photocraft": {
+    "version": "0.23.1",
+    "repository": "https://github.com/storytold/photocraft",
+    "commit": "45066c48292e92229ada3459a83453439514c83d",
+    "sourceDirectory": "vendor/photocraft-0.23.1",
+    "engine": "official matching CLI; upstream Rust not modified or rebuilt",
+    "integration": "infrastructure/photocraft-session.js + src/photocraft-workspace.js",
+    "license": "MIT OR Apache-2.0; upstream licenses and NOTICE supplied with CLI"
+  },
+  "terraDraw": {"version":"1.40.0", "repository":"https://github.com/JamesLMilner/terra-draw", "npmGitHead":"a598ae63393eceb5b31f88aeee7000bdf0f55f60", "licenseFile":"vendor/licenses/terra-draw-MIT.txt"},
+  "terraDrawMaplibre": {"version":"1.5.0", "repository":"https://github.com/JamesLMilner/terra-draw-maplibre-gl-adapter", "npmGitHead":"8757783af8faf3cb75555a9a9b646c72b01a1d43", "licenseFile":"vendor/licenses/terra-draw-maplibre-MIT.txt"},
+  "turf": {"packages":["@turf/area","@turf/length"], "version":"7.4.0", "repository":"https://github.com/Turfjs/turf", "licenseFiles":["node_modules/@turf/area/LICENSE","node_modules/@turf/length/LICENSE"]},
+  "dependencyLock": "package-lock.json"
+}
